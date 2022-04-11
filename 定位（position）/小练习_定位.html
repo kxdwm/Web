@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box1{
+            width: 300px;
+            height: 200px;
+            margin: 100px auto;
+            position: relative;
+        }
+        /*设置li*/
+        .box1 li{
+            /* width: 300px;
+            height: 200px; */
+            list-style: none;
+            /*开启相对定位，使pointer能参考li进行定位*/
+            position: absolute;
+            
+            
+        }
+        /*通过修改元素的层级来显示指定的图片*/
+        .box1 li:nth-child(1){
+            z-index: 1;
+        }
+        .box1 img{
+            width: 500px;
+            height: 300px;
+        }
+        /*设置导航点的样式*/
+        .pointer{
+            position: absolute;
+            z-index: 66;
+            bottom: -80px;
+            
+        }
+        .pointer a{
+            /*设置向左浮动*/
+            float: left;
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            /*设置间距*/
+            margin-left: 4px;
+            background-color: rgba(255,255,255,.6);
+            /*将背景颜色设置到内容区，边框和内边距不在颜色范围内*/
+            background-clip: content-box;
+            border-end-end-radius: 2px transparent solid;
+        }
+        .box1 .pointer a:hover{
+            background-color: #fff;
+            border: 1px rgba(255,255,255,.6) solid;
+
+
+        }
+
+    </style>
+
+</head>
+<body>
+    <ul class="box1">
+        <li><a href="javascript:;"><img src="./p1.jpg"></a></li>
+        <li><a href="javascript:;"><img src="./p2.jpg"></a></li>
+        <li><a href="javascript:;"><img src="./p3.jpg"></a></li>
+        <li><a href="javascript:;"><img src="./p4.jpg"></a></li>
+        <li><a href="javascript:;"><img src="./p5.jpg"></a></li>
+        <li><a href="javascript:;"><img src="./p6.jpg"></a></li>
+        <li><a href="javascript:;"><img src="./p7.jpg"></a></li>
+        <li><a href="javascript:;"><img src="./p8.jpg"></a></li>
+
+        <div class="pointer">
+            <a class="active" href="javasript:;"></a>
+            <a href="javasript:;"></a>
+            <a href="javasript:;"></a>
+            <a href="javasript:;"></a>
+            <a href="javasript:;"></a>
+            <a href="javasript:;"></a>
+            <a href="javasript:;"></a>
+            <a href="javasript:;"></a>
+        </div>
+    </li>
+    
+</body>
+</html>

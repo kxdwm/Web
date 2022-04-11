@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box1{
+            border: 10px red solid;
+            
+
+        }
+        .box2{
+            width: 200px;
+            height: 200px;
+            background-color: bisque;
+            float: left;
+        } 
+        .box3{
+            width: 200px;
+            height: 200px;
+            background-color:blueviolet;
+            float: left;
+        } 
+        /**通过伪元素在需要被撑起的元素后面增加一个空内容，使其能够不受子元素浮动的影响产生高度坍塌*/
+        .box1:after{
+            content: "";
+            /*伪元素是行内元素，通过display把其变成块元素*/
+            display: block;
+            /*清除浮动影响*/
+            clear: both;
+        }
+    </style>
+</head>
+<body>
+    <div class="box1">
+        <div class="box2"></div>
+        <div class="box3"></div>
+    </div>
+</body>
+</html>

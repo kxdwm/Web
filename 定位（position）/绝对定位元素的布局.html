@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box1{
+            width: 500px;
+            height: 500px;
+            background-color: bisque;
+            /*开启相对定位*/
+            position: relative;
+        }
+        .box2{
+            width: 100px;
+            height: 100px;
+            background-color: aquamarine;
+            /*开启绝对定位，此时box2的包含块是离box2最近的开启了定位的祖先块元素,即box1*/
+            position: absolute;
+            margin-left: auto;
+            margin-right: auto;
+            left: 0;
+            right: 0;
+        }
+        /*
+        开启绝对定位之后，原来的水平布局在左右分别加了一个left和right，垂直布局则是在上下分别加了一个top和bottom
+        即left + margin-left + border-left + padding-left + width + padding-right + border-right + margin-right + right =包含块内容区的高度
+        当发生过度约束时，如果9个值中没有auto则自动调整right的值使等式满足，有auto调整auto
+        可设置auto的值：margin width left right，其中left right默认是auto
+
+        如果需要设置水平垂直居中，只需在祖先块元素中开启定位，在需要设置居中的块元素中开启绝对定位，
+        再把margin设置为auto，left right top bottom 的值设置为0即可
+        
+        */
+    </style>
+</head>
+<body>
+    <div class="box1">
+        <div class="box2"></div>
+    </div>
+</body>
+</html>

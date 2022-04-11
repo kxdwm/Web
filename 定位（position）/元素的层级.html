@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /*对于开启了定位的元素，可以通过z-index来控制元素的层级，需要一个整数作为参数，参数越大，层级越高，越优先显示
+          如果元素的层级一样，优先显示html结构中靠下的元素，本页面就是box3,
+          祖先元素的层级不会盖过后代元素*/
+        .box1{
+            font-size: 50px;
+            background-color:bisque;
+            width: 200px;
+            height: 200px;
+        }
+        .box2{
+            font-size: 50px;
+            background-color:aquamarine;
+            width: 200px;
+            height: 200px;
+            position: absolute;
+            top: 50px;
+            left: 50px;
+            /**控制box2的层级为2*/
+            z-index: 2;
+        }
+        .box3{
+            font-size: 50px;
+            background-color:cadetblue;
+            width: 200px;
+            height: 200px;
+            position: absolute;
+            top: 100px;
+            left: 100px;
+            /**控制box3的层级为3*/
+            z-index: 3;
+        }
+    </style>
+</head>
+<body>
+    <div class="box1">1</div>
+    <div class="box2">2</div>
+    <div class="box3">3</div>
+</body>
+</html>
