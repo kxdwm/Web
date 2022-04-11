@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #fu{
+            width: 400px;
+            height:400px;
+            background-color:blueviolet;
+        }
+        #zi{
+            width: 200px;
+            height: 200px;
+            background-color: bisque;
+        }
+    </style>
+    <script>
+        /*事件冒泡：指的是事件向上传导，当后代元素上的事件被触发时，其祖先元素的相同事件也会被触发
+        大部分情况中的冒泡都是有用的，不希望冒泡可以取消冒泡*/
+        window.onload = function(){
+            var zi = document.getElementById("zi");
+            zi.onclick = function(event){
+                event = event||window.event;
+                alert("我是子元素");
+                //取消冒泡
+                event.cancelBubble = true;
+            }
+            var fu = document.getElementById("fu");
+            fu.onclick = function(){
+                alert("我是父元素");
+            }
+            
+            document.onclick = function(){
+                alert("我是body元素");
+            }
+        }
+    </script>
+</head>
+<body>
+    <div id="fu">
+        <div id="zi">
+
+        </div>
+    </div>
+    
+</body>
+</html>

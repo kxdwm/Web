@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        /*解析器在调用函数每次都会向函数内传递两个隐含参数，
+        一个this,指向一个对象，
+        另一个是封装实参的对象arguments，他是一个类数组对象
+        可以通过索引来操作数据，也可以获取长度，在调用函数时，所有的实参都会封装到arguments中保存
+        arguments[0]表示第一个实参*/
+        function fun1(a,b){
+            console.log(arguments.length);
+            //callee属性对应一个对象，就是当前正在指向的函数
+            console.log(arguments.callee);
+        }
+        //调用函数
+        fun1();
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

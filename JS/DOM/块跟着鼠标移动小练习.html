@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #box1{
+            width: 200px;
+            height: 200px;
+            background-color: bisque;
+            /* 开启绝对定位 */
+            position: absolute;
+        }
+    </style>
+    <script>
+        window.onload = function(){
+            var box1 = document.getElementById("box1");
+            document.onmousemove = function(event){
+                event = event||window.event;
+                //cliebtX clientY是相对于可见框的，页面大于可见框
+                // var left = event.clientX;
+                // var top = event.clientY;
+                //pageX  pageY是相对于整个页面的
+                var left = event.pageX;
+                var top = event.pageY;
+                //设置偏移量
+                box1.style.left = left+"px";
+                box1.style.top = top+"px";
+            }
+        }
+
+    </script>
+</head>
+<body>
+    <div id="box1"></div>
+    
+</body>
+</html>

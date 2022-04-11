@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        //页面加载完成再进行JS代码操作
+        window.onload = function(){
+            var btn = document.getElementById("btn");
+            //获取id为sus的所有元素
+            var sus = document.getElementById("sus");
+            //查找#id下所有节点
+            var lis = sus.getElementsByTagName("li");
+            //查找#sus下所有子节点,会获取包括文本节点的所有节点
+            var lis2 = sus.childNodes;
+            //firstChild可以获取到当前元素的第一个子节点（包括空白文本节点）
+
+            btn.onclick = function(){
+                alert(btn.innerHTML);
+                //读取属性名id
+                //注意除了class需要用ClassName
+                alert(btn.id);
+            }
+            //getElementsByTagName表示找出一组相同的名字
+            // var list = document.getElementsByTagName("li");
+            // for(var i = 0; i < list.length; i++){
+            //     alert(list[i].innerHTML);
+            // }
+
+
+
+
+            //定义一个函数专门用来指定元素绑定单机响应函数
+            //第一个参数为要绑定单机响应函数的id属性值，第二个参数为fun事件回调函数，当单击元素时，该函数会触发
+            function myClick(idStr,fun){
+                var btn = document.getElementById("idStr");
+                btn.onclick = fun;
+
+            }
+            myClick("btn",function(){
+                var li1 = document.getElementById("li1");
+                //返回li1的父节点
+                var pn = li1.parentNode;
+                //innerText与innerHTML类似，不同的是会自动将html去除
+                alert(pn.innerHTML);
+            })
+
+            
+
+
+        }
+    </script>
+</head>
+<body>
+    <button id="btn">按钮</button>
+    <div id="sus">
+        <li id="li1">列表1</li>
+        <li id="li2">列表2</li>
+</div>
+    
+    
+</body>
+</html>

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        /*浏览器加载的顺序是自上而下的，读取一行就运行一行
+        如果将script标签写到页面上面，在代码执行是还没有加载
+        将JS写到页面的下面是为了加载完页面再执行JS代码*/
+
+        //onload事件会在整个页面加载完成后才触发
+        //为window绑定一个onload事件
+        window.onload = function(){
+            alert("一切顺利");
+        }
+        </script>
+</head>
+<body>
+    
+    
+    
+</body>
+</html>

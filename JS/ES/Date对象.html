@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        /*创建一个Date对象，返回当前的日期和时间*/
+        var t = new Date();
+        console.log(t); 
+        var t2 = new Date("12/03/2022" );
+        console.log(t2);
+        //返回星期几，0为周日,1为周一
+        var day = t.getDay();
+        //返回几号
+        var date = t.getDate();
+        console.log(day);
+        console.log(date);
+        //时间戳：getTime() 方法可返回距 1970 年 1 月 1 日之间的毫秒数（格林威治标准时间 (GMT) ）。计算机底层在保存时间用的都是时间戳
+        var time = t.getTime();
+        console.log(time);
+        //获取当前时间戳
+        var timenow = Date.now();
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

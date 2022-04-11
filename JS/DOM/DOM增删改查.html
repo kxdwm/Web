@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        //使用innerHTML也能进行DOM的增删查改
+        window.onload = function(){
+
+            //定义一个函数专门用来指定元素绑定单机响应函数
+            //第一个参数为要绑定单机响应函数的id属性值，第二个参数为fun事件回调函数，当单击元素时，该函数会触发
+            function myClick(idStr,fun){
+                var btn = document.getElementById("idStr");
+                btn.onclick = fun;
+
+            }
+            //创建广州节点
+            var bj = document.getElementById("bj");
+            // var btn1 = document.getElementById("btn1");
+            // btn1.onclick = function(){
+            //      //创造元素节点，createElement()需要一个标签名作为参数，将会根据该标签名创造元素节点对象，并将创造好的对象作为返回值返回
+            //     var gz = document.createElement("li");
+            //     //创造广州文本节点
+            //     var gzText = document.createTextNode("广州");
+            //     //将文本子节点添加到元素父节点中
+            //     gz.appendChild(gzText);
+            //     //将广州节点添加到city下
+                
+            //     bj.parentNode.appendChild(gz);
+            // }
+
+            //创建广州节点法2
+            
+            var btn1 = document.getElementById("btn1");
+            btn1.onclick = function(){
+                var gz = document.createElement("li");
+                gz.innerHTML = "广州";
+                bj.parentNode.appendChild(gz);
+            }
+            
+            
+            //将广州节点添加到北京前面    
+            var btn2 = document.getElementById("btn2");
+            btn2.onclick = function(){
+                //创造元素节点，createElement()需要一个标签名作为参数，将会根据该标签名创造元素节点对象，并将创造好的对象作为返回值返回
+                var gz = document.createElement("li");
+                //创造广州文本节点
+                var gzText = document.createTextNode("广州");
+                //将文本子节点添加到元素父节点中
+                gz.appendChild(gzText);
+
+                var bj = document.getElementById("bj");
+                bj.parentNode.insertBefore(gz,bj);
+
+        }
+        //将广州节点替换北京节点
+        //父节点.replaceChild(新节点,旧节点)
+    
+            var btn3 = document.getElementById("btn3");
+            btn3.onclick = function(){
+                //创造元素节点，createElement()需要一个标签名作为参数，将会根据该标签名创造元素节点对象，并将创造好的对象作为返回值返回
+                var gz = document.createElement("li");
+                //创造广州文本节点
+                var gzText = document.createTextNode("广州");
+                //将文本子节点添加到元素父节点中
+                gz.appendChild(gzText);
+
+                
+                bj.parentNode.replaceChild(gz,bj);
+            }}
+                
+
+
+       
+    </script>
+</head>
+<body>
+    <div class="total">
+        <div class="inner">
+            <p>你喜欢哪个城市</p>
+            <ul id="city">
+                <li id="bj">北京</li>
+                <li>上海</li>
+                <li>北海</li>
+                <li>烟台</li>
+            </ul>
+        </div>
+    </div>
+    <div id="btnlist">
+        <button id="btn1">创造一个广州节点</button>
+        <button id="btn2">将广州节点插入到北京前面</button>
+        <button id="btn3">使用广州节点替换北京节点</button>
+        <button id="btn4">删除北京节点</button>
+    </div>
+    
+</body>
+</html>

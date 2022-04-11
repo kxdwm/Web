@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /* table{
+            display: ;
+        } */
+    </style>
+    <script>
+        //删除员工信息
+        
+        function delA(){
+            //删除超链接所在行，this指向超链接
+
+            
+            var tr = this.parentNode.parentNode;
+            //
+            // var name = tr.getElementsByName("td")[0].innerHTML;
+            //弹出提示框,confirm()用于弹出一个带有确认和取消的提示框
+            //确认返回true，取消返回false
+            var flag = confirm("确认删除吗");
+            if(flag){
+                tr.parentNode.removeChild(tr);  
+                    }
+                else{}
+            
+        }
+        
+        window.onload = function(){
+            var ALLa = document.getElementsByTagName("a");
+            //获取所有的超链接
+            //for循环会在页面加载完成立即执行，而响应函数会在超链接被点击时才执行，当响应函数执行完for循环早已执行完
+            for(var i = 0; i < ALLa.length; i++){
+                // alert("for循环正在执行"+i);
+                // ALLa[i].onclick = function(){
+                //     alert("响应函数正在执行"+i);
+                // }//此时输出前面的i为0，后面的为1，而正确的应该是0（从0开始，只有一个元素，所以this指向该a标签这个对象而不用ALLa[i]）
+                
+                //当点击超连接时
+                //ALLa[i]和上面的this不一样
+                
+                
+                ALLa[i].onclick = delA;
+            }
+            
+            
+
+
+            //新增员工信息
+            
+            
+            
+            var btn = document.getElementById("btn");
+            
+            btn.onclick = function(){
+                //注意一定要将获取信息放在点击事件之后执行，如果放在之前就会得到空值
+                var name = document.getElementById("Name").value;
+                var emails = document.getElementById("E-mails").value;
+                var number = document.getElementById("Number").value;
+                
+                console.log(name);
+                //创建tr节点
+                var tr = document.createElement("tr");
+                
+                //创建四个td节点
+                var Nametd = document.createElement("td");
+                var Emailstd = document.createElement("td");
+                var Numbertd = document.createElement("td");
+                var atd = document.createElement("td");
+                //创建一个a元素
+                var a = document.createElement("a");
+
+
+                //创建四个文本节点
+                var NameText = document.createTextNode(name);
+                var EmailsText = document.createTextNode(emails);
+                var NumberText = document.createTextNode(number);
+                var DelText = document.createTextNode("delete");
+                
+
+                //将文本节点添加到td中
+                Nametd.appendChild(NameText);
+                Emailstd.appendChild(EmailsText);
+                Numbertd.appendChild(NumberText);
+                //将文本添加到a中
+                a.appendChild(DelText);
+                //将a添加到td中
+                atd.appendChild(a);
+                //设置a元素的href属性
+                a.href = "javascript:;";
+                a.onclick = delA;
+
+                //将td添加到tr中
+                tr.appendChild(Nametd);
+                tr.appendChild(Emailstd);
+                tr.appendChild(Numbertd);
+                tr.appendChild(atd);
+
+                //将tr添加到table中
+                var mesage = document.getElementById("mesage");
+                
+                //因为在新建的时候添加到了tbody的外部,所以进行修改优化
+                //获取mesage中的tbody
+                var tbody = mesage.getElementsByTagName("tbody")[0];
+                //将tr添加到tbody中
+                tbody.appendChild(tr);
+
+
+                
+   
+
+            }
+            //新建员工信息法2
+            //创建tr节点
+            // var tr = document.createElement("tr");
+            // //设置tr中的内容
+            // btn.onclick = function(){
+            //     var name = document.getElementById("Name").value;
+            //     var emails = document.getElementById("E-mails").value;
+            //     var number = document.getElementById("Number").value;
+            //     tr.innerHTML = "<td>"+name+"</td>"+
+            //                "<td>"+emails+"</td>"+
+            //                "<td>"+number+"</td>"+
+            //                "<td><a href='javascript:;'>delete</td>";
+            //     //将tr添加到table中
+            //     var mesage = document.getElementById("mesage");
+            //     var tbody = mesage.getElementsByTagName("tbody")[0];
+            //     //将tr添加到tbody中
+            //     tbody.appendChild(tr);
+            // }
+            
+            
+
+
+        }
+</script>
+    
+</head>
+<body>
+    <table frame="box" id="mesage">
+        <!-- 第一行 -->
+        <tr>
+            <!-- 表头 -->
+            <th>Name</th>
+            <th>E-mails</th>
+            <th>Number</th>
+            <th>Do</th>
+
+        </tr>
+        <!-- 第二行 -->
+        <tr>
+            <td>Tom</td>
+            <td>193766@qq.com</td>
+            <td>15577900386</td>
+            <td><a href="javascript:;">delete</a></td>
+        </tr>
+        
+
+    </table>
+    <h2>添加新员工</h2>
+    <table>
+        <tr>
+            <td>Name:</td>
+            <td>
+                <input type="text" id="Name">
+            </td>
+        </tr>
+        <tr>
+            <td>E-mails:</td>
+            <td>
+                <input type="text" id="E-mails">
+            </td>
+        </tr>
+        <tr>
+            <td>Number:</td>
+            <td>
+                <input type="text" id="Number">
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <button id="btn">新建</button>
+            </td>
+            
+        </tr>
+        
+    </table>
+            
+</body>
+</html>

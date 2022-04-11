@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        window.onload = function(){
+            var btn = document.getElementById("btn");
+            //通过addEventListener()为元素绑定响应函数，其可以为同一元素的相同事件绑定不同的函数，此时响应函数会根据顺序来执行，但不支持IE8及以下浏览器,IE8用attachEvent()
+            //参数1：事件的字符串不要on
+            //参数2：回调函数：事件触发时该函数会调用
+            //参数3：是否在捕获阶段触发事件，需要一个布尔值，一般为false
+            btn.addEventListener("click",function(){
+                alert(1);
+
+            },false);
+            btn.addEventListener("click",function(){
+                alert(2);
+
+            },false);
+            bind(btn,"click",function(){
+                alert("一切顺利");
+            })
+
+            //定义一个函数，用来专门为指定的元素绑定响应函数
+            /*addEventListener()中的this，是指绑定事件的对象
+              attachEvent()中的this是指window
+              需要统一两种方法的this
+              参数：obj：绑定事件的对象
+              eventStr 事件的字符串（不要on）
+              callback 回调函数*/
+              function bind(obj,eventStr,callback){
+                  //大部分浏览器
+                  obj.addEventListener(eventStr,callback,false);
+                  //IE8及以下
+                  //this的指向是由调用方式决定的
+                  obj.attachEvent("on"+eventStr,function(){
+                      //让浏览器调用匿名函数，在匿名函数中调用callback函数使this的指向给到obj
+                      callback.call(obj);
+                  })
+
+              }
+
+        }
+    </script>
+</head>
+<body>
+    <button id="btn">点击</button>
+    
+</body>
+</html>

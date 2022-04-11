@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        #outer{
+            width: 200px;
+            margin: 0 auto;
+            text-align: center;
+        }
+    </style>
+    <script>
+        window.onload = function(){
+            //所以提取第一个元素也就是只有一个图片
+            var img = document.getElementsByTagName("img")[0]
+            //后面返回的是数组，不能对数组之间进行操作
+            console.log(typeof img);
+            //创建一个数组来保存图片路径
+            var imgArr = ["./1st.png","./2nd.png"]
+            //定义下标
+            var index = 0
+            var pre = document.getElementById("pre");
+            var next = document.getElementById("next");
+            var info = document.getElementById("info");
+            pre.onclick = function(){
+                //切换到上一张,index自减
+                index--;
+                //如果图片下标小于0则将图片切换到最后一张
+                if(index < 0){
+                    index = imgArr.length-1;
+                }
+                info.innerHTML = "共"+imgArr.length+"张图片，当前第"+(index+1)+"张";
+                img.src = imgArr[index];
+               
+                
+            }
+            next.onclick = function(){
+                //切换到下一张,index自加
+                index++;
+                //如果图片下标大于图片数量，则切换到第一张
+                if(index > imgArr.length-1){
+                    index = 0;
+                }
+                info.innerHTML = "共"+imgArr.length+"张图片，当前第"+(index+1)+"张";
+                img.src = imgArr[index];
+                
+                
+            }
+            
+        }
+    </script>
+</head>
+<body>
+    <div id="outer">
+        <p id="info"></p>
+        <img src="./1st.png">
+        <button id="pre">上一张</button>
+        <button id="next">下一张</button>
+        
+</div>
+    
+    
+</body>
+</html>

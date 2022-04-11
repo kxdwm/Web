@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        window.onload = function(){
+            var btn = document.getElementById("btn");
+            var a = document.getElementsByTagName("a");
+            a.onclick = function(){
+                alert("我是一个a标签");
+            }
+            btn.onclick  = function(){
+                var ul = document.getElementById("ul");
+                var li = document.createElement("li");
+                li.innerHTML = "<li><a href='javarscript:;'>新超链接</a></li>";
+                ul.appendChild(li);
+                //只绑定一次事件，即可应用到多个元素上面，即使元素是后添加的
+                //可以尝试将其绑定到元素的共同的祖先元素中，这里a标签的共同祖先元素是ul标签
+                //事件的委派：指将事件统一绑定给共同的祖先元素，这样当后代元素上的事件触发时，会一直冒泡到祖先元素，从而通过祖先元素的响应函数来处理事件
+                //事件的委派利用了冒泡，时间为拍可以减少绑定的次数，提高程序性能
+                ul.onclick = function(event){
+                    //兼容性问题
+                    event = event||window.event;
+                    //target表示触发事件的对象
+                    alert(event.target);
+                    if(event.target.className == "link"){
+                        alert("我是a标签");
+                    }
+
+                    
+                }
+                
+
+            }
+
+        }
+
+    </script>
+</head>
+<body>
+    <ul id="ul">
+        <li><a href="javarscript:;" class="link">超链接</a></li>
+        <li><a href="javarscript:;" class="link">超链接</a></li>
+        <li><a href="javarscript:;" class="link">超链接</a></li>
+    </ul>
+    <button id="btn">新建</button>
+    
+</body>
+</html>
